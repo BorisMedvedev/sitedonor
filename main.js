@@ -68,7 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
           },
         });
 
-        if (!response.ok) throw new Error('Не удалось загрузить страницу');
+        if (!response.ok)
+          throw new Error('Не удалось загрузить страницу, повторите попытку');
 
         return await response.text();
       } catch (error) {
@@ -76,7 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    throw new Error('Не удалось загрузить страницу через прокси');
+    throw new Error(
+      'Не удалось загрузить страницу через прокси, повторите попытку'
+    );
   }
 
   // Расширенный поиск изображений
