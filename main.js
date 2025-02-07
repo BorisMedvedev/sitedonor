@@ -195,3 +195,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
+
+function normalizeUrl(url) {
+  // Удаляем пробелы в начале и конце
+  url = url.trim();
+
+  // Проверяем, начинается ли URL с http:// или https://
+  if (!url.startsWith('http://') && !url.startsWith('https://')) {
+    url = 'https://' + url;
+  }
+
+  // Удаляем слеш в конце, если он есть
+  if (url.endsWith('/')) {
+    url = url.slice(0, -1);
+  }
+
+  return url;
+}
+
+// Обновляем обработчик клика
+parseBtn.addEventListener('click', async () => {
+  let url = urlInput.value;
+
+  // Нормализуем URL перед использованием
+  url = normalizeUrl(url);
+
+  // Обновляем значение в инпуте
+  urlInput.value = url;
+
+  if (!url) {
+    alert('Введите корректный URL');
+    return;
+  }
+
+  // Далее весь остальной код парсера...
+});
